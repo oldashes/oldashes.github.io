@@ -16,7 +16,7 @@ comments: no
 
 **Email**: [oldashes@gmail.com](mailto:ccf.developer@gmail.com)   
 **Weibo**: [craaaaaaaazy](http://weibo.com/u/327527275)        
-**Twitter**: [Carl Chen](https://twitter.com/CarlOnWeb)
+**Twitter**: [@oldashes](https://twitter.com/oldashes)
 
 ----
 
