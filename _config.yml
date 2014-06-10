@@ -1,10 +1,9 @@
-# Site settings
-title: 有风塘
-email: oldashes@gmail.com
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
-baseurl: ""
-url: "http://yourdomain.com"
+markdown: rdiscount
+permalink: /:year/:month/:day/:title/
+url: http://oldashes.github.io
+author: oldashes
+highlighter: pygments
+safe: true
+paginate: 16
+auto: true
 
-# Build settings
-markdown: kramdown
-permalink: pretty

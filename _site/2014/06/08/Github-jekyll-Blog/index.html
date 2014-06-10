@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="oldashes" />
+    <title>Mac OS X下使用Github+Jekyll搭建博客 | oldashes</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="/feed/" rel="alternate" title="oldashes" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+  </head>
+  <script type="text/javascript">
+    function setTimeSpan(){
+    	var date = new Date();
+    	timeSpan.innerText=date.format('yyyy-MM-dd hh:mm:ss');
+    }
+    
+    Date.prototype.format = function(format)
+		{
+    var o =
+    	{
+    	    "M+" : this.getMonth()+1, //month
+    	    "d+" : this.getDate(),    //day
+    	    "h+" : this.getHours(),   //hour
+    	    "m+" : this.getMinutes(), //minute
+    	    "s+" : this.getSeconds(), //second
+    	    "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+    	    "S" : this.getMilliseconds() //millisecond
+    	}
+    	if(/(y+)/.test(format))
+    	format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    	for(var k in o)
+    	if(new RegExp("("+ k +")").test(format))
+    	format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+    	return format;
+		}
+  </script>
+  <body onLoad="setInterval(setTimeSpan,1000);">
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>Mac OS X下使用Github+Jekyll搭建博客</h1>
+        </header>
+        <nav>
+        <span><a title="home page" class="" href="/">Home</a></span>
+        <span><a title="about" class="" href="/about/">About</a></span>
+        <span><a title="guestbook" class="" href="/guestbook/">Guestbook</a></span>
+        <span><a title="categories" class="" href="/categories/">Categories</a></span>
+        <span><a title="tags" class="" href="/tags/">Tags</a></span>
+        <span><a title="links" class="" href="/links/">Links</a></span>
+        <span><a title="subscribe by RSS" class="" href="/feed/">Subscribe</a></span>
+        </nav>
+        <article class="content">
+        <section class="post">
+<h1>Mac OS X下使用Github+Jekyll搭建博客</h1>
+
+<p>毕业的差不多事落定了，这几天也闲来没事，于是又开始琢磨之前一直想弄的博客。在网上搜索一番之后，决定就用Github提供的Pages服务来搭一个简单的blog吧。</p>
+
+<h2>一. Github Pages</h2>
+
+<p>Github Pages是Github提供给Github用户用以介绍项目信息或者个人（或组织）信息的静态网页托管服务，免费且不限制流量。所以若要使用Github Pages服务首先需要注册一个Github Papes账号，然后就可以按照官方页面指示进行操作了。</p>
+
+<p>官方首页 <a href="https://pages.github.com">https://pages.github.com</a><br/>
+<img src="http://ww3.sinaimg.cn/large/5657ca78gw1eh6sy94rivj20m80e0abo.jpg" alt="githubpages" />
+需要注意的是：<br/>
+- 新建的仓库名必须是<strong>yourname.github.io</strong>格式'yourname'是你的账户名称<br/>
+- 在新建的仓库添加一个HTML文件，文件名必须是<strong>index.html</strong><br/>
+- 发布之后github会进行转换，等待十分钟左右打开<strong>yourname.github.io</strong>看到你刚写得<strong>index.html</strong>显示出来则成功</p>
+
+<h2>二. Jekyll</h2>
+
+<p>完成第一步之后说明你的个人页面已经开通，那么接下来怎么在此页面中搭建一个属于你自己的个人Blog呢？前面已经提到上传此仓库的代码会进行转换使之能够识别你的文件并展现在浏览器中，而其使用的就是Jekyll框架。Jekyll是Github官方开发的一个轻量级的Blog框架，只需要简单的设置就可以轻松获得一个效果不错的Blog系统。<br/>
+Jekyll官方首页 <a href="http://jekyll.com">http://jekyll.com</a> <br/>
+Jekyll中文首页 <a href="http://jekyllcn.com">http://jekyllcn.com</a></p>
+
+<p><strong>首先来了解一下Jekyll的目录结构，方便理解整个Blog的运转过程。</strong></p>
+
+<pre><code>.
+├── _config.yml
+├── _drafts
+|   ├── begin-with-the-crazy-ideas.textile
+|   └── on-simplicity-in-technology.markdown
+├── _includes
+|   ├── footer.html
+|   └── header.html
+├── _layouts
+|   ├── default.html
+|   └── post.html
+├── _posts
+|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
+|   └── 2009-04-26-barcamp-boston-4-roundup.textile
+├── _site
+└── index.html  
+</code></pre>
+
+<p>具体作用可以查看：<a href="http://jekyllcn.com/docs/structure">官方文档</a>。</p>
+
+<p><strong>在了解了Jekyll框架的目录结构之后，接下来就要着手开始搭建Blog了。通常我们都会在本地搭建好完整的项目并调试运行之后再上传至Github发布，那么首先就是需要本地安装Jekyll框架。</strong><br/>
+由于Jekyll是基于Ruby开发的框架，因此，在安装Jekyll之前确保电脑中已经装好了，可以在terminal键入命令，按以下操作进行。</p>
+
+<blockquote><p>检查ruby版本<br/>
+<code>ruby --version</code></p></blockquote>
+
+<p>我的Mac中已经自带装有最新的ruby2.0版</p>
+
+<blockquote><p>更新gem<br/>
+<code>sudo gem update --system</code></p></blockquote>
+
+<p>并不是所有人的gem都需要更新，我在更新的时候就提示为最新版</p>
+
+<blockquote><p>安装Jekyll<br/>
+<code>sudo gem install jekyll</code></p></blockquote>
+
+<p>这一步会自动安装Jekyll以及所需的一切依赖，但是我装这一步的时候卡了很久，报错一直是</p>
+
+<p><code>
+ERROR:  Could not find a valid gem 'jekyll' (&gt;= 0), here is why:    
+Unable to download data from https://rubygems.org/ - Errno::ETIMEDOUT: Operation timed out - connect(2) (https://rubygems.org/latest_specs.4.8.gz)
+</code></p>
+
+<p>可能是网络的原因，连续试过几次之后安装成功。然后我们新建一个文件夹作为我们Blog项目的工作目录，我建的目录放置在<br/>
+<code>/Users/Pacino/jekyllProject/myBlog</code></p>
+
+<blockquote><p>打开建好的目录，使用如下命令新建一个Blog模板<br/>
+<code>jekyll new blog</code><br/>
+进入blog目录，键入如下命令打开jekyll服务器<br/>
+<code>jekyll serve</code></p></blockquote>
+
+<p>终端显示图中信息，则创建成功<br/>
+<img src="http://ww3.sinaimg.cn/large/5657ca78gw1eh6sx0ueawj20m805jjsw.jpg" alt="ServerRunning" /></p>
+
+<blockquote><p>然后打开浏览器键入<br/>
+<code>http://0.0.0.0:4000/</code></p></blockquote>
+
+<p>看到一个全新的小Blog模板了吗？是的，你成功了！<br/>
+接下来可以把Blog文件夹上传至https://github.com/yourname/yourname.github.io中。我使用github的Mac客户端，直接拷贝至仓库上传即可。</p>
+
+</section>
+<section class="meta">
+
+<br/>
+<br/>
+<span>
+	<a   class="pageNavInvalid"  >Previous</a>
+	&nbsp;&nbsp;&nbsp;
+	<a   class="pageNavInvalid"  >Next</a>
+</span>
+<hr>
+<span class="author">
+  <a href="http://webfrogs.github.com">oldashes</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2014-06-08">2014-06-08</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+  <a href="/categories/#notes" title="notes">notes</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with 
+  
+  <a href="/tags/#Github" title="Github">Github</a>&nbsp;
+  
+  <a href="/tags/#Jekyll" title="Jekyll">Jekyll</a>&nbsp;
+  
+  <a href="/tags/#OS X" title="OS X">OS X</a>&nbsp;
+  
+</span>
+
+</section>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"oldashes"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+<!--
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+-->
+
+
+        </article>
+      </div>
+
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> & <a href="http://pages.github.com">GitHub</a> | Copyright 2012 - 2014 by <a href="/about/">oldashes</a> | <span class="label label-info" id="timeSpan"></span></small></p>
+    </footer>
+
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34960818-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <!-- Baidu Button BEGIN -->
+		<script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=4&amp;pos=right&amp;uid=541841" ></script>
+		<script type="text/javascript" id="bdshell_js"></script>
+		<script type="text/javascript">
+		var bds_config={"bdTop":170};
+		document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+		</script>
+		<!-- Baidu Button END -->
+  </body>
+</html>

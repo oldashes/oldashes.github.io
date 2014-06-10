@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="oldashes" />
-    <title>About me | oldashes</title>
+    <title>Categories | oldashes</title>
     <link rel="shortcut icon" href="/favicon.ico">
     <link href="/feed/" rel="alternate" title="oldashes" type="application/atom+xml" />
     <link rel="stylesheet" href="/media/css/style.css">
@@ -40,7 +40,7 @@
     <div id="container">
       <div id="main" role="main">
         <header>
-        <h1>About me</h1>
+        <h1>Categories</h1>
         </header>
         <nav>
         <span><a title="home page" class="" href="/">Home</a></span>
@@ -53,21 +53,46 @@
         </nav>
         <article class="content">
         <section class="post">
-<p>半吊子程序员一枚，科技控，爱折腾。<br/>
-热衷于优雅的代码，喜欢Python与Mac OS。<br/>
-热爱电影与音乐，英美剧粉，Al Pacino死忠粉。</p>
+<div id='tag_cloud'>
 
-<hr />
+<a href="#notes" title="notes" rel="1">notes (1)</a>
 
-<h3>Contact me</h3>
+</div>
 
-<p><strong>Email</strong>: <a href="mailto:ccf.developer@gmail.com">oldashes@gmail.com</a> <br/>
-<strong>Weibo</strong>: <a href="http://weibo.com/u/327527275">craaaaaaaazy</a>      <br/>
-<strong>Twitter</strong>: <a href="https://twitter.com/CarlOnWeb">Carl Chen</a></p>
 
-<hr />
 
-<p><a href="http://weibo.com/u/1448594040?s=6uyXnP"><img src="http://service.t.sina.com.cn/widget/qmd/1448594040/27e84cd9/1.png" alt="新浪微博" /></a></p>
+
+<ul class="listing">
+
+  <li class="listing-seperator" id="notes">notes</li>
+
+  <li class="listing-item">
+  <time datetime="2014-06-08">2014-06-08</time>
+  <a href="http://oldashes.github.io/2014/06/08/Github-jekyll-Blog/" title="Mac OS X下使用Github+Jekyll搭建博客">Mac OS X下使用Github+Jekyll搭建博客</a>
+  </li>
+
+
+</ul>
+
+
+
+
+<script src="/media/js/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script>
+
+
+<p></p>
+
+<script language="javascript">
+$.fn.tagcloud.defaults = {
+    size: {start: 1, end: 1, unit: 'em'},
+      color: {start: '#f8e0e6', end: '#ff3333'}
+};
+
+$(function () {
+    $('#tag_cloud a').tagcloud();
+});
+</script>
+
 
 </section>
 

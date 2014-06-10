@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <rss version="2.0"
+        xmlns:content="http://purl.org/rss/1.0/modules/content/"
+        xmlns:atom="http://www.w3.org/2005/Atom"
+  >
+  <channel>
+    <title>oldashes</title>
+    <link href="http://oldashes.github.io/feed/" rel="self" />
+    <link href="http://webfrogs.github.com" />
+    <lastBuildDate>2014-06-10T19:29:03+08:00</lastBuildDate>
+    <webMaster>ccf.developer@gmail.com</webMaster>
+    
+    <item>
+      <title>Mac OS X下使用Github+Jekyll搭建博客</title>
+      <link href="http://oldashes.github.io/2014/06/08/Github-jekyll-Blog/"/>
+      <pubDate>2014-06-08T00:00:00+08:00</pubDate>
+      <author>oldashes</author>
+      <guid>http://oldashes.github.io/2014/06/08/Github-jekyll-Blog</guid>
+      <content:encoded><![CDATA[<h1>Mac OS X下使用Github+Jekyll搭建博客</h1>
+
+<p>毕业的差不多事落定了，这几天也闲来没事，于是又开始琢磨之前一直想弄的博客。在网上搜索一番之后，决定就用Github提供的Pages服务来搭一个简单的blog吧。</p>
+
+<h2>一. Github Pages</h2>
+
+<p>Github Pages是Github提供给Github用户用以介绍项目信息或者个人（或组织）信息的静态网页托管服务，免费且不限制流量。所以若要使用Github Pages服务首先需要注册一个Github Papes账号，然后就可以按照官方页面指示进行操作了。</p>
+
+<p>官方首页 <a href="https://pages.github.com">https://pages.github.com</a><br/>
+<img src="http://ww3.sinaimg.cn/large/5657ca78gw1eh6sy94rivj20m80e0abo.jpg" alt="githubpages" />
+需要注意的是：<br/>
+- 新建的仓库名必须是<strong>yourname.github.io</strong>格式'yourname'是你的账户名称<br/>
+- 在新建的仓库添加一个HTML文件，文件名必须是<strong>index.html</strong><br/>
+- 发布之后github会进行转换，等待十分钟左右打开<strong>yourname.github.io</strong>看到你刚写得<strong>index.html</strong>显示出来则成功</p>
+
+<h2>二. Jekyll</h2>
+
+<p>完成第一步之后说明你的个人页面已经开通，那么接下来怎么在此页面中搭建一个属于你自己的个人Blog呢？前面已经提到上传此仓库的代码会进行转换使之能够识别你的文件并展现在浏览器中，而其使用的就是Jekyll框架。Jekyll是Github官方开发的一个轻量级的Blog框架，只需要简单的设置就可以轻松获得一个效果不错的Blog系统。<br/>
+Jekyll官方首页 <a href="http://jekyll.com">http://jekyll.com</a> <br/>
+Jekyll中文首页 <a href="http://jekyllcn.com">http://jekyllcn.com</a></p>
+
+<p><strong>首先来了解一下Jekyll的目录结构，方便理解整个Blog的运转过程。</strong></p>
+
+<pre><code>.
+├── _config.yml
+├── _drafts
+|   ├── begin-with-the-crazy-ideas.textile
+|   └── on-simplicity-in-technology.markdown
+├── _includes
+|   ├── footer.html
+|   └── header.html
+├── _layouts
+|   ├── default.html
+|   └── post.html
+├── _posts
+|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
+|   └── 2009-04-26-barcamp-boston-4-roundup.textile
+├── _site
+└── index.html  
+</code></pre>
+
+<p>具体作用可以查看：<a href="http://jekyllcn.com/docs/structure">官方文档</a>。</p>
+
+<p><strong>在了解了Jekyll框架的目录结构之后，接下来就要着手开始搭建Blog了。通常我们都会在本地搭建好完整的项目并调试运行之后再上传至Github发布，那么首先就是需要本地安装Jekyll框架。</strong><br/>
+由于Jekyll是基于Ruby开发的框架，因此，在安装Jekyll之前确保电脑中已经装好了，可以在terminal键入命令，按以下操作进行。</p>
+
+<blockquote><p>检查ruby版本<br/>
+<code>ruby --version</code></p></blockquote>
+
+<p>我的Mac中已经自带装有最新的ruby2.0版</p>
+
+<blockquote><p>更新gem<br/>
+<code>sudo gem update --system</code></p></blockquote>
+
+<p>并不是所有人的gem都需要更新，我在更新的时候就提示为最新版</p>
+
+<blockquote><p>安装Jekyll<br/>
+<code>sudo gem install jekyll</code></p></blockquote>
+
+<p>这一步会自动安装Jekyll以及所需的一切依赖，但是我装这一步的时候卡了很久，报错一直是</p>
+
+<p><code>
+ERROR:  Could not find a valid gem 'jekyll' (&gt;= 0), here is why:    
+Unable to download data from https://rubygems.org/ - Errno::ETIMEDOUT: Operation timed out - connect(2) (https://rubygems.org/latest_specs.4.8.gz)
+</code></p>
+
+<p>可能是网络的原因，连续试过几次之后安装成功。然后我们新建一个文件夹作为我们Blog项目的工作目录，我建的目录放置在<br/>
+<code>/Users/Pacino/jekyllProject/myBlog</code></p>
+
+<blockquote><p>打开建好的目录，使用如下命令新建一个Blog模板<br/>
+<code>jekyll new blog</code><br/>
+进入blog目录，键入如下命令打开jekyll服务器<br/>
+<code>jekyll serve</code></p></blockquote>
+
+<p>终端显示图中信息，则创建成功<br/>
+<img src="http://ww3.sinaimg.cn/large/5657ca78gw1eh6sx0ueawj20m805jjsw.jpg" alt="ServerRunning" /></p>
+
+<blockquote><p>然后打开浏览器键入<br/>
+<code>http://0.0.0.0:4000/</code></p></blockquote>
+
+<p>看到一个全新的小Blog模板了吗？是的，你成功了！<br/>
+接下来可以把Blog文件夹上传至https://github.com/yourname/yourname.github.io中。我使用github的Mac客户端，直接拷贝至仓库上传即可。</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
