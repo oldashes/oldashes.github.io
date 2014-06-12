@@ -1,7 +1,8 @@
 ---
 layout: page
-title: 留言
-comments: yes
+title: 留言版
+comments: yes  
+
 ---
 
-来了，就留下你的足迹吧。。
+留下你的脚印吧。
