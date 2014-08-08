@@ -11,7 +11,7 @@ tag:
 ---  
  
 # Mac OS X下使用Github+Jekyll搭建博客
-毕业事的差不多落定了，这几天也闲来没事，于是又开始琢磨之前一直想弄的博客。在网上搜索一番之后，决定就用Github提供的Pages服务来搭一个简单的blog吧。
+毕业的事差不多落定了，这几天也闲来没事，于是又开始琢磨之前一直想弄的博客。在网上搜索一番之后，决定就用Github提供的Pages服务来搭一个简单的blog吧。
 ## 一. Github Pages
 Github Pages是Github提供给Github用户用以介绍项目信息或者个人（或组织）信息的静态网页托管服务，免费且不限制流量。所以若要使用Github Pages服务首先需要注册一个Github Papes账号，然后就可以按照官方页面指示进行操作了。  
   
