@@ -2,7 +2,7 @@
 layout: post
 title: "Mac OS X自带Vim的配置"
 categories:
--notes
+- notes
 tag:
 - Vim
 - OS X
@@ -30,52 +30,52 @@ __Vim__ 已经被集成在了Mac OS X中，已经无需安装。当然，更多�
 
 使用__Vim__打开__.vimrc__进行配置，若没有则新建一个，下面是我的
 
-	 1 syn on                      "语法支持
-	 2
-	 3 "common conf {{             通用配置
-	 4 set ai                      "自动缩进
-	 5 set bs=2                    "在insert模式下用退格键删除
-	 6 set showmatch               "代码匹配
-	 7 set laststatus=2            "总是显示状态行
-	 8 set expandtab               "以下三个配置配合使用，设置tab和缩进空格数
-	 9 set shiftwidth=4
-	10 set tabstop=4
-	11 set cursorline              "为光标所在行加下划线
-	12 set number                  "显示行号
-	13 set autoread                "文件在Vim之外修改过，自动重新读入
-	14
-	15 set ignorecase              "检索时忽略大小写
-	16 set fileencodings=uft-8,gbk "使用utf-8或gbk打开文件
-	17 set hls                     "检索时高亮显示匹配项
-	18 set helplang=cn             "帮助系统设置为中文
-	19 set foldmethod=syntax       "代码折叠
-	20 "}}
-	21
-	22 "conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
-	23 let mapleader = ','
-	24 nnoremap <C-l> gt
-	25 nnoremap <C-h> gT
-	26 nnoremap <leader>t : tabe<CR>
-	27
-	28 "conf for plugins {{ 插件相关的配置
-	29 "状态栏的配置
-	30 "powerline{
-	31 set guifont=PowerlineSymbols\ for\ Powerline
-	32 set nocompatible
-	33 set t_Co=256
-	34 let g:Powerline_symbols = 'fancy'
-	35 "}
-	36 "NERDTree配置
-	37 "NERDTree{
-	38 let NERDTreeShowHidden = 1
-	39 let NERDTreeMouseMode = 2
-	40 "}
-	41 "pathogen是Vim用来管理插件的插件
-	42 "pathogen{
-	43 call pathogen#infect()
-	44 "}
-	45
-	46 "}}
+> syn on                      "语法支持  
+	   
+>"common conf \{\{             通用配置  
+ set ai                      "自动缩进  
+ set bs=2                    "在insert模式下用退格键删除  
+ set showmatch               "代码匹配  
+ set laststatus=2            "总是显示状态行  
+ set expandtab               "以下三个配置配合使用，设置tab和缩进空格数  
+ set shiftwidth=4  
+ set tabstop=4
+ set cursorline              "为光标所在行加下划线  
+ set number                  "显示行号  
+ set autoread                "文件在Vim之外修改过，自动重新读入  
+  
+ >set ignorecase              "检索时忽略大小写  
+ set fileencodings=uft-8,gbk "使用utf-8或gbk打开文件  
+ set hls                     "检索时高亮显示匹配项  
+ set helplang=cn             "帮助系统设置为中文  
+ set foldmethod=syntax       "代码折叠  
+ "\}\}  
+  
+ >"conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等  
+ let mapleader = ','  
+ nnoremap <C-l> gt  
+ nnoremap <C-h> gT  
+ nnoremap <leader>t : tabe<CR>  
+   
+ >"conf for plugins \{\{ 插件相关的配置  
+ "状态栏的配置  
+ "powerline\{  
+ set guifont=PowerlineSymbols\ for\ Powerline  
+ set nocompatible  
+ set t_Co=256  
+ let g:Powerline_symbols = 'fancy'  
+ "\}  
+ "NERDTree配置  
+ "NERDTree\{  
+ let NERDTreeShowHidden = 1  
+ let NERDTreeMouseMode = 2  
+ "\}  
+ "pathogen是Vim用来管理插件的插件  
+ "pathogen\{  
+ call pathogen#infect()  
+ "\}  
+  
+> "\}\}  
 
 保存退出，可能会有错误提示，没关系因为插件还没安装。其中`"`是注释的意思，将配置分类使用`{`分隔开来方便查看。这个配置中还包含了三个插件（ __powerline__ 、 __NERDTree__ 和 __pathogen__ ）的配置，后面会介绍到。
 
